@@ -1,1 +1,1 @@
-names = {"E_U_0", "E_U_1", "E_U_2", "A", "A_L_0", "A_L_1", "A_L_2", "Z", "Phi1", "Phi2", "Pi1", "Pi2"};
+names = { "w_U_0", "w_U_1", "w_U_2", "phi1", "phi2", "sigma1", "sigma2", "test"};

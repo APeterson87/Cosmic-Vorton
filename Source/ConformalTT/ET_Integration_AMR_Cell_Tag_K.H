@@ -23,8 +23,14 @@ state_is_tagged(int i, int j, int k,
         amrex::Real x_U_1 = (j + 0.5)*geom.CellSize(1) + domain_xlo[1]; 
         amrex::Real x_U_2 = (k + 0.5)*geom.CellSize(2) + domain_xlo[2];
         
-        amrex::Real chi = state_fab(i, j, k, Idx::chi);
+        amrex::Real V = state_fab(i, j, k, Idx::V);
         
-        return chi < error_threshold;
+        amrex::Real r = std::sqrt(x_U_0*x_U_0 + x_U_1*x_U_1 + x_U_2*x_U_2);
+        
+        //return (r < error_threshold);
+        
+        return V*1000000.0 > error_threshold;
+        
+        //return (lev <= 1)*(r < error_threshold) || (lev > 1)*(std::fabs(V*1000000) > error_threshold);
 }
 #endif

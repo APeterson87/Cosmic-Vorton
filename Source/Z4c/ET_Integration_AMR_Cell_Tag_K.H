@@ -24,9 +24,12 @@ state_is_tagged(int i, int j, int k,
         amrex::Real x_U_1 = (j + 0.5)*geom.CellSize(1) + domain_xlo[1]; 
         amrex::Real x_U_2 = (k + 0.5)*geom.CellSize(2) + domain_xlo[2];
         
+        amrex::Real r = std::sqrt(x_U_0*x_U_0 + x_U_1*x_U_1 + x_U_2*x_U_2);
+        
         amrex::Real lambda = 2.0;
         amrex::Real eta = 0.05;
         amrex::Real e = 1.0;
+        amrex::Real OMEGA = 0.0141421;
         
         amrex::Real chi = state_fab(i, j, k, Idx::chi);
         
@@ -35,9 +38,11 @@ state_is_tagged(int i, int j, int k,
         amrex::Real phi1 = state_fab(i, j, k, Idx::phi1);
         amrex::Real phi2 = state_fab(i, j, k, Idx::phi2);
         
-        amrex::Real V = 0.25*lambda*std::pow((phi1*phi1 + phi2*phi2)/2-eta*eta,2);
+        amrex::Real sigma1 = state_fab(i, j, k, Idx::sigma1);
+        amrex::Real sigma2 = state_fab(i, j, k, Idx::sigma2);
 
-        amrex::Real rho = V;
+
+        amrex::Real V = 0.25*lambda*std::pow(((phi1*phi1+phi2*phi2+sigma1*sigma1 + sigma2*sigma2)/2.0-eta*eta),2) + OMEGA*OMEGA/2*(sigma1*sigma1 + sigma2*sigma2);
         
         
         
@@ -51,7 +56,7 @@ state_is_tagged(int i, int j, int k,
         return (lev <= 3)*(r < error_threshold) || (lev > 3)*(std::fabs(alpha) < error_threshold);
         */
         
-        return chi*chi < error_threshold;
+        return (lev <= 1)*(r < error_threshold) || (lev > 1)*(V*1000000 > error_threshold);
         
         //return (r < error_threshold);
         

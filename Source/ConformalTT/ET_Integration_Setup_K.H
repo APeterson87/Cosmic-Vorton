@@ -16,6 +16,6 @@ namespace Diag {
          enum DiagnosticIndexes {w_U_phi, NumScalars}; 
 };
 
-#define NUM_GHOST_CELLS 4
+#define NUM_GHOST_CELLS 2
 
 #endif

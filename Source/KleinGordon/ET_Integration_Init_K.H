@@ -53,38 +53,13 @@ state_init(int i, int j, int k,
         
         
         
-        state_fab(i, j, k, Idx::E_U_0) = 0;
-        state_fab(i, j, k, Idx::E_U_1) = 0;
-        state_fab(i, j, k, Idx::E_U_2) = 0;
-
-        state_fab(i, j, k, Idx::A) = 0;
         
-        amrex::Real A_L_theta = QA/e;
-        
-        amrex::Real dthetadx = -x*z/(std::sqrt(rdomain*rdomain - z*z)*(R*R + rdomain*rdomain - 2*R*std::sqrt(rdomain*rdomain - z*z)));
-        amrex::Real dthetady = -y*z/(std::sqrt(rdomain*rdomain - z*z)*(R*R + rdomain*rdomain - 2*R*std::sqrt(rdomain*rdomain - z*z)));
-        
-        amrex::Real f1 = -R + std::sqrt(rdomain*rdomain - z*z);
-        amrex::Real f2 = 1 + z*z/((R - std::sqrt(x*x+y*y))*(R - std::sqrt(x*x+y*y)));
-        
-        amrex::Real dthetadz = 1.0/(f1*f2);
-
-
-        state_fab(i, j, k, Idx::A_L_0) = dthetadx*A_L_theta;
-        state_fab(i, j, k, Idx::A_L_1) = dthetady*A_L_theta;
-        state_fab(i, j, k, Idx::A_L_2) = dthetadz*A_L_theta;
-
-        state_fab(i, j, k, Idx::Z) = 0;
         
         amrex::Real costheta = (rdomain*rdomain-R*R-r*r)/(2*R*r);//(std::sqrt(x*x+y*y) - R)/r;
         amrex::Real sintheta = z/r;
 
-        state_fab(i, j, k, Idx::Phi1) = std::sqrt(2)*eta*QF*costheta;
+        state_fab(i, j, k, Idx::phi1) = std::sqrt(2)*eta*QF*costheta;
 
-        state_fab(i, j, k, Idx::Phi2) = std::sqrt(2)*eta*QF*sintheta;
-
-        state_fab(i, j, k, Idx::Pi1) = 0;
-
-        state_fab(i, j, k, Idx::Pi2) = 0;
+        state_fab(i, j, k, Idx::phi2) = std::sqrt(2)*eta*QF*sintheta;
 }
 #endif

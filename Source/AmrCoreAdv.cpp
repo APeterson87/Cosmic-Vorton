@@ -1286,7 +1286,7 @@ Real AmrCoreAdv::SumC (MultiFab& state_mf, const amrex::Geometry& geom)
     reduce_operations.eval(bx, reduce_data,
     [=,numcells=numcells] AMREX_GPU_DEVICE (const int i, const int j, const int k) -> ReduceTuple
     {
-        return {sum_C_constraint(i,j,k, state_fab, dx, gdata)/(numcells[0]*numcells[1]*numcells[2])};
+        return {/*sum_C_constraint(i,j,k, state_fab, dx, gdata)/(numcells[0]*numcells[1]*numcells[2])*/};
     });
   }
     ReduceTuple reduced_values = reduce_data.value();

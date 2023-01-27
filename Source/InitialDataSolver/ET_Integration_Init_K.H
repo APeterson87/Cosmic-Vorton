@@ -18,7 +18,7 @@ state_init(int i, int j, int k,
         amrex::Real x_U_1 = (j + 0.5)*geom.CellSize(1) + domain_xlo[1]; 
         amrex::Real x_U_2 = (k + 0.5)*geom.CellSize(2) + domain_xlo[2]; 
         
-        amrex::Real R = 100;
+        amrex::Real R = 200;
         
         amrex::Real x = x_U_0;
         amrex::Real y = x_U_1;
@@ -79,8 +79,8 @@ state_init(int i, int j, int k,
         //amrex::Real rho = V+A+B;
         
         
-        state_fab(i, j, k, Idx::u) = u;
-        state_fab(i, j, k, Idx::chi) = std::pow(1+u,-4);
+        state_fab(i, j, k, Idx::u) = 0; //u;
+        state_fab(i, j, k, Idx::chi) = 1; //std::pow(1+u,-4);
         
 }
 #endif

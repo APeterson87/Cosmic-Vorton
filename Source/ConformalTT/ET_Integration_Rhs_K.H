@@ -91,13 +91,13 @@ state_rhs(int i, int j, int k,
         amrex::Real S_U_1 = x*S_U_phi;
         
         
-
+        
         rhs_fab(i, j, k, Idx::u) = dDDu_LL_00 + dDDu_LL_11 + dDDu_LL_22+2*M_PI*rho_adj;
         
         rhs_fab(i, j, k, Idx::w_U_0) = dDDw_ULL_000 + dDDw_ULL_011 + dDDw_ULL_022-8*M_PI*std::pow(psi,10)*S_U_0;
         
         rhs_fab(i, j, k, Idx::w_U_1) = dDDw_ULL_100 + dDDw_ULL_111 + dDDw_ULL_122-8*M_PI*std::pow(psi,10)*S_U_1;
         
-
+        
 }
 #endif
