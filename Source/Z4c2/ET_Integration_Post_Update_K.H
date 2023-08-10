@@ -66,9 +66,9 @@ state_post_update(int i, int j, int k,
         state_fab(i, j, k, Idx::Atilde_LL_12) = (Atilde_LL_12 - 1.0/3.0*TrAtilde*gamtilde_LL_12);
         state_fab(i, j, k, Idx::Atilde_LL_22) = (Atilde_LL_22 - 1.0/3.0*TrAtilde*gamtilde_LL_22);
 
-        //state_fab(i, j, k, Idx::chi) = std::max(0.00100000000000000, chi);
+        state_fab(i, j, k, Idx::chi) = std::max(0.0100000000000000, chi);
 
-        //state_fab(i, j, k, Idx::alpha) = std::max(0.00100000000000000, alpha);
+        state_fab(i, j, k, Idx::alpha) = std::max(0.0100000000000000, alpha);
         
 }
 #endif

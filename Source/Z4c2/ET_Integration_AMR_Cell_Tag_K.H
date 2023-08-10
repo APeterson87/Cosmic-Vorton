@@ -26,21 +26,20 @@ state_is_tagged(int i, int j, int k,
         
         amrex::Real lambda = 2.0;
         amrex::Real eta = 0.05;
-        amrex::Real e = 1.0;
+        amrex::Real e = std::sqrt(lambda/2.0);
         
         amrex::Real chi = state_fab(i, j, k, Idx::chi);
         
         amrex::Real psi = std::pow(chi, 0.25);
         
-        amrex::Real phi1 = state_fab(i, j, k, Idx::phi1);
+        /*amrex::Real phi1 = state_fab(i, j, k, Idx::phi1);
         amrex::Real phi2 = state_fab(i, j, k, Idx::phi2);
         
         amrex::Real V = 0.25*lambda*std::pow((phi1*phi1 + phi2*phi2)/2-eta*eta,2);
 
-        amrex::Real rho = V;
+        amrex::Real v = 4*V/(lambda*eta*eta*eta*eta);*/
         
-        
-        
+        amrex::Real r = std::sqrt(x_U_0*x_U_0 + x_U_1*x_U_1 + x_U_2*x_U_2);
         /*
         amrex::Real r = std::sqrt(x0*x0 + x1*x1 + x2*x2);
         
@@ -51,7 +50,10 @@ state_is_tagged(int i, int j, int k,
         return (lev <= 3)*(r < error_threshold) || (lev > 3)*(std::fabs(alpha) < error_threshold);
         */
         
-        return chi*chi < error_threshold;
+        //return (chi < error_threshold);
+        
+        //return (V*1000000 > error_threshold);
+        return (lev <= 3)*(r < error_threshold) || (lev > 3)*(chi < error_threshold);
         
         //return (r < error_threshold);
         
