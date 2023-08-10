@@ -90,7 +90,7 @@ state_init(int i, int j, int k,
         
         state_fab(i, j, k, Idx::w_U_0) = -y/R*QW;
         state_fab(i, j, k, Idx::w_U_1) = x/R*QW;
-        state_fab(i, j, k, Idx::w_U_2) = x/R*QW;
+        state_fab(i, j, k, Idx::w_U_2) = x/R*QW; //0;
         state_fab(i, j, k, Idx::chi) = 1/(psi*psi*psi*psi);
         
         
