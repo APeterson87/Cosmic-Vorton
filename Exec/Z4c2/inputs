@@ -1,27 +1,28 @@
 # Stopping Criteria 
 max_step = 200
-stop_time = 10000.0
+stop_time = 10000000.0
 
 # Problem Size & Geometry 
-amr.n_cell = 64 64 64
+amr.n_cell = 128 128 128
 
-geometry.is_periodic = 0 0 0
+geometry.is_periodic = 0 0 0 
 geometry.coord_sys = 0 
-geometry.prob_lo = -512.0 -512.0 -512.0 
-geometry.prob_hi = 512.0 512.0 512.0 
+geometry.prob_lo = -1024.0 -1024.0 -1024.0 
+geometry.prob_hi = 1024.0 1024.0 1024.0 
 
 # Turn on verbosity in amr 
 amr.v = 1
 
 # Refinement Parameters 
-amr.max_level = 2
-amr.max_grid_size = 16
+amr.max_level = 5
+amr.max_grid_size = 64
 amr.ref_ratio = 2
-amr.n_error_buf = 1
-amr.blocking_factor = 8
-amr.regrid_int = 5
+amr.n_error_buf = 0
+amr.blocking_factor = 32
+amr.regrid_int = 10
+#amr.grid_eff = 0.9
 
-# AMR Interpolation 
+# AMR Interpolation
 amr.interpolation_type = 6
 
 # Problem specific boundary conditions 
@@ -29,12 +30,12 @@ domain_lo_bc_types = 2 2 2
 domain_hi_bc_types = 2 2 2 
 
 # Problem specific tagging for refinement 
-problem.s_error = 0.98 0.88
+problem.s_error = 450 350 250 190 0.8 #0.78 #0.1
 problem.error_comp = 0
 
 # Problem specific inputs 
 problem.elliptic = 0
-problem.cfl = 0.25 #0.0333333
+problem.cfl = 0.25
 
 # Plotting steps
 amr.plot_int = 1
@@ -42,8 +43,8 @@ amr.diag_int = 1
 amr.chk_int = 10
 
 # Restart from checkpoint or use as initial condition? 
-amr.restart = initial_data_chk
-amr.restart_is_initial_data = 1
+amr.restart = chk0000100
+amr.restart_is_initial_data = 0
 
 ## integration.type can take on the following values: 
 ## 0 = Forward Euler 
