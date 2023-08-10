@@ -13,7 +13,7 @@ namespace InitIdx {
 };
 
 namespace Diag { 
-         enum DiagnosticIndexes {rhoADM, NumScalars}; 
+         enum DiagnosticIndexes {rhoADM, Psi4re, Psi4im, ModPsi4, NumScalars}; 
          //enum DiagnosticIndexes {Psi4re, Psi4im, ModPsi4, AbsAlpha, Ksclr, NumScalars};
 };
 

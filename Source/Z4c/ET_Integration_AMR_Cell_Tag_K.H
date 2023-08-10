@@ -56,7 +56,9 @@ state_is_tagged(int i, int j, int k,
         return (lev <= 3)*(r < error_threshold) || (lev > 3)*(std::fabs(alpha) < error_threshold);
         */
         
-        return (lev <= 1)*(r < error_threshold) || (lev > 1)*(V*1000000 > error_threshold);
+        return (V*1000000 > error_threshold);
+        
+        //return (lev <= 1)*(r < error_threshold) || (lev > 1)*(V*1000000 > error_threshold);
         
         //return (r < error_threshold);
         
