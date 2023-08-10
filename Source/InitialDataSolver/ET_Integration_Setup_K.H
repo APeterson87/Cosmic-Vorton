@@ -5,7 +5,7 @@
 #include <AMReX_Array4.H> 
 
 namespace Idx { 
-         enum ETIndexes {u, chi, V, A, B, NumScalars}; 
+         enum ETIndexes {u, alphapsi, chi, V, A, B, NumScalars}; 
 };
 
 namespace InitIdx { 

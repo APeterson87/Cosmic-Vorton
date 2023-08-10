@@ -25,7 +25,7 @@ state_is_tagged(int i, int j, int k,
         
         amrex::Real lambda = 2.0;
         amrex::Real eta = 0.05;
-        amrex::Real e = 1.0;
+        amrex::Real e = std::sqrt(lambda/2.0);
         
         amrex::Real u = state_fab(i, j, k, Idx::u);
         amrex::Real V = state_fab(i, j, k, Idx::V);
@@ -34,10 +34,12 @@ state_is_tagged(int i, int j, int k,
         
         amrex::Real chi = state_fab(i, j, k, Idx::chi);
         
+        /*amrex::Real v = 4*V/(lambda*eta*eta*eta*eta); */
+        
         amrex::Real r = std::sqrt(x_U_0*x_U_0 + x_U_1*x_U_1 + x_U_2*x_U_2);
         
-        //return (r < error_threshold);
-        
-        return (lev <= 1)*(r < error_threshold) || (lev > 1)*(V*1000000 > error_threshold);
+        //return (chi < error_threshold);
+        return (lev <= 3)*(r < error_threshold) || (lev > 3)*(chi < error_threshold);
+        //return (V*1000000 > error_threshold);
 }
 #endif
